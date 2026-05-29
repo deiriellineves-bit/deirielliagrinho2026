@@ -1,4 +1,66 @@
-<!DOCTYPE>
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Agrinho: Agro Sustentável</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 { color: #1b5e20; margin-bottom: 10px; }
+        .btn {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        .btn:hover { background-color: #388e3c; }
+        #score-container { font-size: 20px; font-weight: bold; }
+        .hide { display: none; }
+    </style>
+</head>
+<body>
 
+<div class="container">
+    <h1>Quiz Agrinho 🌾</h1>
+    <p>Agro Forte e Futuro Sustentável</p>
+    <hr style="border: 1px solid #c8e6c9; margin-bottom: 20px;">
+
+    <div id="game-box">
+        <h3 id="question">Pergunta aqui</h3>
+        <div id="answers-box"></div>
+    </div>
+
+    <div id="result-box" class="hide">
+        <h2>Fim de Jogo!</h2>
+        <p id="score-container"></p>
+        <button class="btn" onclick="restartGame()">Jogar Novamente</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
 </html>
