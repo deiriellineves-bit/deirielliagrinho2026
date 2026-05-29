@@ -1,1 +1,91 @@
+const questions = [
+    {
+        question: "Qual das alternativas reflete o 'Futuro Sustentável' no campo?",
+        answers: [
+            { text: "Uso descontrolado de defensivos", correct: false },
+            { text: "Rotação de culturas e plantio direto", correct: true },
+            { text: "Desmatamento de áreas nativas", correct: false },
+            { text: "Uso excessivo de água potável", correct: false }
+        ]
+    },
+    {
+        question: "O que ajuda a manter o 'Agro Forte' e tecnológico?",
+        answers: [
+            { text: "Uso de drones e sensores de solo", correct: true },
+            { text: "Abandonar a gestão de dados", correct: false },
+            { text: "Evitar o uso de sistemas digitais", correct: false },
+            { text: "Reduzir o estudo da terra", correct: false }
+        ]
+    },
+    {
+        question: "Como o pequeno produtor contribui para a sustentabilidade?",
+        answers: [
+            { text: "Focando apenas em monocultura prolongada", correct: false },
+            { text: "Praticando a agricultura familiar orgânica", correct: true },
+            { text: "Ignorando a reciclagem de embalagens", correct: false },
+            { text: "Desperdiçando alimentos colhidos", correct: false }
+        ]
+    }
+];
 
+let currentQuestionIndex = 0;
+let score = 0;
+
+const questionElement = document.getElementById('question');
+const answersBox = document.getElementById('answers-box');
+const gameBox = document.getElementById('game-box');
+const resultBox = document.getElementById('result-box');
+const scoreContainer = document.getElementById('score-container');
+
+function startGame() {
+    currentQuestionIndex = 0;
+    score = 0;
+    gameBox.classList.remove('hide');
+    resultBox.classList.add('hide');
+    showQuestion();
+}
+
+function showQuestion() {
+    resetState();
+    let currentQuestion = questions[currentQuestionIndex];
+    questionElement.innerText = currentQuestion.question;
+
+    currentQuestion.answers.forEach(answer => {
+        const button = document.createElement('button');
+        button.innerText = answer.text;
+        button.classList.add('btn');
+        button.addEventListener('click', () => selectAnswer(answer.correct));
+        answersBox.appendChild(button);
+    });
+}
+
+function resetState() {
+    while (answersBox.firstChild) {
+        answersBox.removeChild(answersBox.firstChild);
+    }
+}
+
+function selectAnswer(correct) {
+    if (correct) {
+        score++;
+    }
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        showQuestion();
+    } else {
+        showResults();
+    }
+}
+
+function showResults() {
+    gameBox.classList.add('hide');
+    resultBox.classList.remove('hide');
+    scoreContainer.innerText = `Você acertou ${score} de ${questions.length} perguntas!`;
+}
+
+function restartGame() {
+    startGame();
+}
+
+// Inicia o jogo ao carregar a página
+startGame();
