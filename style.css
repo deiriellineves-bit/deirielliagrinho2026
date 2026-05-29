@@ -1,1 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
 
+void limparTela() {
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}
+
+int main() {
+    int resposta;
+    int pontuacao = 0;
+
+    limparTela();
+    printf("=========================================\n");
+    printf("   JOGO DO AGRINHO - AGRO SUSTENTAVEL    \n");
+    printf("=========================================\n\n");
+
+    // Pergunta 1
+    printf("1) Qual pratica reflete o Futuro Sustentavel no campo?\n");
+    printf("[1] Uso descontrolado de defensivos\n");
+    printf("[2] Rotacao de culturas e plantio direto\n");
+    printf("[3] Desmatamento de areas nativas\n");
+    printf("Sua resposta: ");
+    scanf("%d", &resposta);
+    if (resposta == 2) {
+        pontuacao++;
+    }
+
+    // Pergunta 2
+    limparTela();
+    printf("2) O que ajuda a manter o Agro Forte e tecnologico?\n");
+    printf("[1] Uso de drones e sensores de solo\n");
+    printf("[2] Abandonar a gestao de dados\n");
+    printf("[3] Reduzir o estudo da terra\n");
+    printf("Sua resposta: ");
+    scanf("%d", &resposta);
+    if (resposta == 1) {
+        pontuacao++;
+    }
+
+    // Pergunta 3
+    limparTela();
+    printf("3) Como o pequeno produtor contribui para a sustentabilidade?\n");
+    printf("[1] Focando apenas em monocultura\n");
+    printf("[2] Praticando a agricultura familiar organica\n");
+    printf("[3] Ignorando a reciclagem\n");
+    printf("Sua resposta: ");
+    scanf("%d", &resposta);
+    if (resposta == 2) {
+        pontuacao++;
+    }
+
+    // Resultado Final
+    limparTela();
+    printf("=========================================\n");
+    printf("            FIM DO JOGO!                 \n");
+    printf("=========================================\n");
+    printf("Voce acertou %d de 3 perguntas.\n", pontuacao);
+    if(pontuacao == 3) {
+        printf("Parabens! Voce e um mestre do Agro Sustentavel!\n");
+    } else {
+        printf("Bom trabalho! Continue estudando sobre o campo.\n");
+    }
+    printf("=========================================\n");
+
+    return 0;
+}
